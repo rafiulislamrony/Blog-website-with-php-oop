@@ -60,12 +60,17 @@ $fm = new Format();
 				<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
 				<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
 			</div>
+			
+
 			<div class="searchbtn clear">
-				<form action="" method="post">
-					<input type="text" name="keyword" placeholder="Search keyword..." />
+				<form action="search.php" method="get">
+					<input type="text" name="search" placeholder="Search keyword..." />
 					<input type="submit" name="submit" value="Search" />
 				</form>
 			</div>
+
+
+
 		</div>
 	</div>
 	<div class="navsection templete">

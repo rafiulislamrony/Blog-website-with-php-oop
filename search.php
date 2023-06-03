@@ -1,11 +1,11 @@
 
 <?php include 'inc/header.php'; ?> 
 <?php 
-if(!isset($_GET['category']) || $_GET['category'] == NULL ){
+if(!isset($_GET['search']) || $_GET['search'] == NULL ){
 	header("Location:404.php");
 	exit;   
 }else{
-	$id = $_GET['category'];
+	$search = $_GET['search'];
 }
 
 ?> 
@@ -13,7 +13,9 @@ if(!isset($_GET['category']) || $_GET['category'] == NULL ){
 <div class="contentsection contemplete clear">
 	<div class="maincontent clear">
     <?php 
-		$query = "SELECT * FROM tbl_post where cat=$id"; 
+
+        $query = "SELECT * FROM tbl_post WHERE title LIKE '%$search%' OR body LIKE '%$search%'";
+
 		$post = $db->select($query); 
 		if($post) {
 		while($result = $post->fetch_assoc()) {
@@ -30,10 +32,10 @@ if(!isset($_GET['category']) || $_GET['category'] == NULL ){
         <a href="post.php?id=<?php echo $result['id'] ?>">Read More</a>
         </div>
     </div>
-    <?php }} else { header("Location:404.php");
-			exit;  
-		}
-		?><!--- End While Loop -->
+    <?php }} else {  ?> 
+        <h3>Your Search Reasult Not Found ...</h3>
+		
+        <?php } ?> <!--- End While Loop -->
         
 	</div>
 
