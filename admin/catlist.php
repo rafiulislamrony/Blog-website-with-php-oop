@@ -13,46 +13,28 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="odd gradeX">
-							<td>01</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
+					
+					<?php 
+			          $query = "SELECT * FROM tbl_category ORDER BY id DESC";
+					  $category = $db->select($query);
+					  if($category){
+						$i=0;
+						while($result = $category->fetch_assoc()){
+							$i++; 
+					    ?>
+ 
+					    <tr class="odd gradeX">
+							<td><?php echo $i; ?></td>
+							<td><?php echo $result['name']; ?></td>
+							<td>
+								<a href="editcat.php?catid=<?php echo $result['id']; ?>">Edit</a>
+								 || 
+								 <a href="delcat.php?delcat=<?php echo $result['id']; ?>" onclick="return confirm('Are You Sure to Delete?')">Delete</a>
+							</td>
 						</tr>
-						<tr class="even gradeC">
-							<td>02</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>03</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>04</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-							<tr class="odd gradeX">
-							<td>05</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>06</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>07</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>08</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
+						
+						<?php } }?>
+   
 					</tbody>
 				</table>
                </div>
