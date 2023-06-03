@@ -1,3 +1,7 @@
+<?php include '../lib/Session.php'; 
+ Session::checkSession();
+?> 
+
 <!DOCTYPE html>
 <html>
 
@@ -46,10 +50,15 @@
                     <div class="floatleft">
                         <img src="img/img-profile.jpg" alt="Profile Pic" />
                     </div>
+                    <?php
+                    if(isset($_GET['action']) && $_GET['action'] == "logout"){
+                        Session::destroy();
+                    }
+                    ?>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
                             <li>Hello Admin</li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="?action=logout">Logout</a></li>
                         </ul>
                     </div>
                 </div>
