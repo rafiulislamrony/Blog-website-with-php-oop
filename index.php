@@ -1,13 +1,7 @@
-<?php include 'config/config.php'; ?>
-<?php include 'lib/Database.php'; ?>
-<?php include 'helpers/Format.php'; ?>
+
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/slider.php'; ?>
  
-<?php 
-$db = new Database(); 
-$fm = new Format();
-?>
 
 	<div class="contentsection contemplete clear">
 		<div class="maincontent clear">
@@ -26,7 +20,7 @@ $fm = new Format();
 		<?php 
 		$query = "SELECT * FROM tbl_post limit $start_form, $per_page "; 
 		$post = $db->select($query); 
-		if($post)  
+		if($post) {
 		while($result = $post->fetch_assoc()) {
 		?> <!--- Start If -->
 
@@ -44,7 +38,7 @@ $fm = new Format();
 			</div>
 			<?php
 				// End of the loop content
-			} else {
+			}} else {
 			header("Location:404.php");
 			exit;  
 		   }
@@ -56,7 +50,7 @@ $fm = new Format();
 		$result = $db->select($query);
 
 		$total_rows = mysqli_num_rows($result);
-		
+
 		$total_pages = ceil($total_rows/$per_page);
 		
 		echo "<span class='pagination'> <a href='index.php?page=1'>".'First Page'." </a> ";
