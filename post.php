@@ -19,7 +19,7 @@ if(!isset($_GET['id']) || $_GET['id'] == NULL ){
 					?>
 				<h2><?php echo $result['title'] ?></h2>
 				<h4><?php echo $fm->formatDate($result['date']); ?>, By <?php echo $result['aurthor'] ?></h4>
-				<img src="admin/upload/<?php echo $result['image'] ?>" alt="MyImage"/>
+				<img src="admin/<?php echo $result['image'] ?>" alt="MyImage"/>
 				<?php echo $result['body'] ?>
 				  
 				<div class="relatedpost clear">
@@ -32,7 +32,7 @@ if(!isset($_GET['id']) || $_GET['id'] == NULL ){
 				    while($relatedresult = $relatedpost->fetch_assoc()) {
 					?>
 					<a href="post.php?id=<?php echo $relatedresult['id'] ?>">
-					  <img src="admin/upload/<?php echo $relatedresult['image'] ?>" alt="post image"/>
+					  <img src="admin/<?php echo $relatedresult['image'] ?>" alt="post image"/>
 					</a> 
 					<?php }}else{
 							echo "No Related Post Available";
