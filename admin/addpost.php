@@ -3,29 +3,76 @@
 <div class="grid_10">
 	<div class="box round first grid">
             <h2>Add New Post</h2>
+            <?php 
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $title = $fm->validation($_POST['title']);
+                $cat = $fm->validation($_POST['cat']);
+                $body = $fm->validation($_POST['body']);
+                $aurthor = $fm->validation($_POST['aurthor']);
+                $tags = $fm->validation($_POST['tags']);
+
+                $title = $db->link->real_escape_string($title);
+                $cat = $db->link->real_escape_string($cat);
+                $body = $db->link->real_escape_string($body);
+                $aurthor = $db->link->real_escape_string($aurthor);
+                $tags = $db->link->real_escape_string($tags);
+
+                $permited  = array('jpg', 'jpeg', 'png', 'gif');
+                $file_name = $_FILES['image']['name'];
+                $file_size = $_FILES['image']['size'];
+                $file_temp = $_FILES['image']['tmp_name'];
+            
+                $div = explode('.', $file_name);
+                $file_ext = strtolower(end($div));
+                $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+                $uploaded_image = "upload/".$unique_image;
+
+                if($title == " " || $cat == "" || $body == "" || $tags == "" || $aurthor == "" || $file_name == ""){
+                    echo "<span class='error'>Field Must not be empty.</span>";
+                }elseif ($file_size > 1048567) {
+                    echo "<span class='error'>Image size should be less than 1MB!</span>";
+                }elseif (!in_array($file_ext, $permited)) {
+                    echo "<span class='error'>You can only upload files with the following extensions: " . implode(', ', $permited) . "</span>";
+                }else {
+                    move_uploaded_file($file_temp, $uploaded_image);
+                    $query = "INSERT INTO tbl_post (cat, title, body, image, aurthor, tags) 
+                              VALUES ('$cat', '$title', '$body', '$uploaded_image', '$aurthor', '$tags')";
+                    $inserted_rows = $db->insert($query); 
+                    if ($inserted_rows) {
+                        echo "<span class='success'>Data inserted successfully.</span>";
+                    } else {
+                        echo "<span class='error'>Failed to insert data.</span>";
+                    }
+                }
+            }
+            ?>
+
             <div class="block">               
-                <form action="" method="" enctype="multipart/form-data">
-                <table class="form">
-                    
+                <form action="addpost.php" method="post" enctype="multipart/form-data">
+                <table class="form"> 
                     <tr>
                         <td>
                             <label>Title</label>
                         </td>
                         <td>
-                            <input type="text" placeholder="Enter Post Title..." class="medium" />
+                            <input type="text" name="title" placeholder="Enter Post Title..." class="medium" />
                         </td>
-                    </tr>
-                    
+                    </tr> 
                     <tr>
                         <td>
                             <label>Category</label>
                         </td>
                         <td>
-                            <select id="select" name="select">
+                            <select id="select" name="cat">
                                 <option >Select Category</option>
-                                <option value="1">Category One</option>
-                                <option value="2">Category Two</option>
-                                <option value="3">Cateogry Three</option>
+                                <?php
+                                $query = "SELECT * FROM tbl_category";
+                                $category = $db->select($query);
+                                if($category){
+                                    while($result = $category->fetch_assoc()){ 
+                                ?> 
+                                <option value="<?php echo $result['id'] ?>"><?php echo $result['name'] ?></option>   --
+                                <?php }}?> 
                             </select>
                         </td>
                     </tr> 
@@ -34,7 +81,7 @@
                             <label>Upload Image</label>
                         </td>
                         <td>
-                            <input type="file" />
+                            <input type="file" name="image" />
                         </td>
                     </tr>
                     <tr>
@@ -42,9 +89,25 @@
                             <label>Content</label>
                         </td>
                         <td>
-                            <textarea class="tinymce"></textarea>
+                            <textarea class="tinymce" name="body"></textarea>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <label>Tags</label>
+                        </td>
+                        <td>
+                            <input type="text" name="tags" placeholder="Enter Tags..." class="medium" />
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>
+                            <label>Aurthor</label>
+                        </td>
+                        <td>
+                            <input type="text" name="aurthor" placeholder="Enter Aurthor Name..." class="medium" />
+                        </td>
+                    </tr> 
                     <tr>
                         <td></td>
                         <td>
