@@ -30,11 +30,9 @@ if(!isset($_GET['category']) || $_GET['category'] == NULL ){
         <a href="post.php?id=<?php echo $result['id'] ?>">Read More</a>
         </div>
     </div>
-    <?php }} else { header("Location:404.php");
-			exit;  
-		}
-		?><!--- End While Loop -->
-        
+    <?php } }else { ?>
+				<h3>No Post Available in this Category.</h3>
+		<?php } ?>  
 	</div>
 
 <?php include 'inc/sidebar.php'; ?>

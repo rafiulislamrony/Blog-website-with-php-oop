@@ -3,19 +3,15 @@
 <?php
     if(!isset($_GET['catid']) || $_GET['catid'] == NULL){
         // header("Location:catlist.php");
-        echo "<script> 
-        window.location = 'catlist.php';
-        </script>";
+        echo "<script>window.location = 'catlist.php';</script>";
     }else{
-        $id = $_GET['catid'];
+        $id = $_GET['catid']; 
     }
-?>
-
-
+?> 
         <div class="grid_10">
 		
             <div class="box round first grid">
-                <h2>Add New Category</h2>
+                <h2>Update New Category</h2>
                <div class="block copyblock"> 
         <?php 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
