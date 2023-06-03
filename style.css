@@ -397,6 +397,28 @@ margin:200px 0;
 }
 .items:hover .shadow{top:0}
 
+.pagination{
+  display: block; 
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 20px;
+  text-align: center; 
+}
+
+.pagination a {
+  background: #e6af4b;
+  text-decoration: none;
+  border: 1px solid #333;
+  color: #333;
+  padding: 2px 10px;
+  margin-left: 2px;
+  border-radius: 3px;
+  transition: 0.3s ease-in; 
+}
+.pagination a:hover{
+  color: #8a5c08; 
+  color: #ffff;
+}
 
 
 
