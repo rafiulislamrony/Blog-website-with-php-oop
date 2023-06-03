@@ -43,8 +43,15 @@ a {
 a:hover {
 	color:#333;
 }
+.success{
+	color: green;
+	font-size: 18px;
+}
 
-
+.error{
+	color: red; 
+	font-size: 18px;
+}
 /* 960 grid system container background
 ----------------------------------------------- */
 .container_12,

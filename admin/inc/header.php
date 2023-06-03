@@ -9,7 +9,12 @@
 $db = new Database(); 
 $fm = new Format();
 ?>
-
+<?php 
+  header("Cache-Control: no-cache, must-revalidate");  
+  header("Pragma: no-cache"); 
+  header("Expires: " . gmdate("D, d M Y H:i:s", time() - 3600) . " GMT");  
+  header("Cache-Control: max-age=2592000, public");  
+?>
 <!DOCTYPE html>
 <html>
 
