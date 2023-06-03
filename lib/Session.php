@@ -5,23 +5,23 @@ class Session{
       session_start();
     }
 
-    public static function set($key, $value) {
-        $_SESSION[$key] = $value;
+    public static function set($key, $val){
+        $_SESSION[$key] = $val;
     }
     
-    public static function get($key) {
+    public static function get($key){
         if (isset($_SESSION[$key])) {
-            return $_SESSION[$key];
+         return $_SESSION[$key];
         } else {
-            return false;
+         return false;
         }
     }
-     
+
     public static function checkSession(){
         self::init();
-        if(self::get("login") == false){
-            self::destroy();
-            header("Location:login.php");
+        if (self::get("login")== false) {
+        self::destroy();
+        header("Location:login.php");
         }
     }
 
