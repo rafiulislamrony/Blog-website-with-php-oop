@@ -21,9 +21,7 @@ if(!isset($_GET['id']) || $_GET['id'] == NULL ){
 				<h4><?php echo $fm->formatDate($result['date']); ?>, By <?php echo $result['aurthor'] ?></h4>
 				<img src="admin/upload/<?php echo $result['image'] ?>" alt="MyImage"/>
 				<?php echo $result['body'] ?>
-				 
-				
-
+				  
 				<div class="relatedpost clear">
 					<h2>Related articles</h2>
 					<?php
