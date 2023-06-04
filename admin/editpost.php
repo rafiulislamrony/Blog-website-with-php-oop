@@ -43,17 +43,29 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                         echo "<span class='error'>Image size should be less than 1MB!</span>";
                     } elseif (!in_array($file_ext, $permited)) {
                         echo "<span class='error'>You can only upload files with the following extensions: " . implode(', ', $permited) . "</span>";
-                    } else {
+                    } else { 
+
+                        // Delete previous image 
+                        $deloldimg = "SELECT * FROM tbl_post where id='$postid' order by id desc";
+                        $getpostall = $db->select($deloldimg);
+                        if ($getpostall) {
+                        while ($postimge = $getpostall->fetch_assoc()) { 
+                            $old_image = $postimge['image']; 
+                            if (file_exists($old_image)) {
+                                unlink($old_image);
+                            }
+                        }}
+
                         move_uploaded_file($file_temp, $uploaded_image);
                         $query = "UPDATE tbl_post
-                    SET
-                    cat='$cat',
-                    title='$title',
-                    body='$body',
-                    image='$uploaded_image',
-                    aurthor='$aurthor',
-                    tags='$tags'
-                    WHERE id='$postid' ";
+                            SET
+                            cat='$cat',
+                            title='$title',
+                            body='$body',
+                            image='$uploaded_image',
+                            aurthor='$aurthor',
+                            tags='$tags'
+                            WHERE id='$postid' ";
 
                         $updated_rows = $db->update($query);
                         if ($updated_rows) {
@@ -64,13 +76,13 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                     }
                 } else {
                     $query = "UPDATE tbl_post
-                                    SET
-                                    cat='$cat',
-                                    title='$title',
-                                    body='$body',
-                                    aurthor='$aurthor',
-                                    tags='$tags'
-                                    WHERE id='$postid' ";
+                        SET
+                        cat='$cat',
+                        title='$title',
+                        body='$body',
+                        aurthor='$aurthor',
+                        tags='$tags'
+                        WHERE id='$postid' ";
 
                     $updated_rows = $db->update($query);
                     if ($updated_rows) {
