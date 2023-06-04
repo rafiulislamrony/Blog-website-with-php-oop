@@ -81,15 +81,15 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                 }
             }
         }
-?>
+        ?>
 
         <div class="block">
             <?php
-                $query = "SELECT * FROM tbl_post where id='$postid' order by id desc";
+            $query = "SELECT * FROM tbl_post where id='$postid' order by id desc";
             $getpost = $db->select($query);
             if ($getpost) {
                 while ($postresult = $getpost->fetch_assoc()) {
-                    ?> 
+                    ?>
                     <form action="" method="post" enctype="multipart/form-data">
                         <table class="form">
                             <tr>
@@ -108,17 +108,17 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                                     <select id="select" name="cat">
                                         <option>Select Category</option>
                                         <?php
-                            $query = "SELECT * FROM tbl_category";
-        $category = $db->select($query);
-        if ($category) {
-            while ($result = $category->fetch_assoc()) {
-                ?>
+                                        $query = "SELECT * FROM tbl_category";
+                                        $category = $db->select($query);
+                                        if ($category) {
+                                            while ($result = $category->fetch_assoc()) {
+                                                ?>
                                                 <option <?php
-                if ($postresult['cat'] == $result['id']) { ?> selected="selected" <?php } ?>
+                                                if ($postresult['cat'] == $result['id']) { ?> selected="selected" <?php } ?>
                                                     value="<?php echo $result['id'] ?>"><?php echo $result['name'] ?></option> --
 
                                             <?php }
-            } ?>
+                                        } ?>
                                     </select>
                                 </td>
                             </tr>
@@ -137,8 +137,8 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                                 </td>
                                 <td>
                                     <textarea class="tinymce" name="body">
-                                               <?php echo $postresult['body'] ?>
-                                            </textarea>
+                                        <?php echo $postresult['body'] ?>
+                                    </textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -168,9 +168,9 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                     </form>
 
                     <?php
-    }
-}
-?>
+                }
+            }
+            ?>
 
         </div>
     </div>
