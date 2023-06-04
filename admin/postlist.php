@@ -32,18 +32,21 @@
 						$i=0;
 						while($result = $post->fetch_assoc()){
 							$i++; 
-					?>
+					 ?>
 
 						<tr class="odd gradeX">
 							<td style="width: 5%;"> <?php echo $i++; ?> </td>
-							<td style="width: 15%;"> <?php echo $result['title']; ?> </td>
+							<td style="width: 15%;"><a href="editpost.php?editpostid=<?php echo $result['id'];?>"> <?php echo $result['title']; ?> </a></td>
 							<td style="width: 20%;"> <?php echo $fm->textShorten($result['body'], 50); ?> </td>
 							<td style="width: 10%;"> <?php echo $result['name']; ?> </td>
 							<td style="width: 10%;"> <img src="<?php echo $result['image']; ?>" style=" width: 80px; margin-top:10px;" /> </td>
 							<td style="width: 10%;"> <?php echo $result['aurthor']; ?> </td>
 							<td style="width: 10%;"> <?php echo $result['tags']; ?> </td>
 							<td style="width: 10%;"> <?php echo $fm->formatDate($result['date']); ?> </td>
-							<td style="width: 15%;"><a href="">Edit</a> || <a href="">Delete</a></td>
+							<td style="width: 15%;">
+							   <a href="editpost.php?editpostid=<?php echo $result['id'];?>">Edit</a> || 
+							   <a href="deletepost.php?delpostid=<?php echo $result['id']; ?>"  onclick="return confirm('Are You Sure to Delete?')">Delete</a>
+						    </td>
 						</tr>
 
 					<?php }  } ?>

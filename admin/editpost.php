@@ -1,8 +1,16 @@
 ﻿<?php include 'inc/header.php'; ?>
 <?php include 'inc/sidebar.php'; ?>
+<?php
+    if(!isset($_GET['editpostid']) || $_GET['editpostid'] == NULL){
+        // header("Location:catlist.php");
+        echo "<script>window.location = 'postlist.php';</script>";
+    }else{
+        $postid = $_GET['editpostid']; 
+    }
+?> 
 <div class="grid_10">
 	<div class="box round first grid">
-            <h2>Add New Post</h2>
+            <h2>Update Post</h2>
             <?php 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $title = $fm->validation($_POST['title']);
@@ -47,7 +55,14 @@
             }
             ?>
 
-            <div class="block">               
+            <div class="block">  
+                <?php 
+                 $query = "SELECT * FROM tbl_post where id='$postid' order by id desc";
+                  $getpost = $db->select($query);
+                   if($getpost){
+                    while($postresult = $getpost->fetch_assoc()){ 
+                ?>
+
                 <form action="addpost.php" method="post" enctype="multipart/form-data">
                 <table class="form"> 
                     <tr>
@@ -55,14 +70,14 @@
                             <label>Title</label>
                         </td>
                         <td>
-                            <input type="text" name="title" placeholder="Enter Post Title..." class="medium" />
+                            <input type="text" name="title" value="<?php echo $postresult['title']?>" class="medium" />
                         </td>
                     </tr> 
                     <tr>
                         <td>
                             <label>Category</label>
                         </td>
-                        <td>
+                        <td> 
                             <select id="select" name="cat">
                                 <option >Select Category</option>
                                 <?php
@@ -71,7 +86,13 @@
                                 if($category){
                                     while($result = $category->fetch_assoc()){ 
                                 ?> 
-                                <option value="<?php echo $result['id'] ?>"><?php echo $result['name'] ?></option>   --
+                                <option 
+                                <?php 
+                                if($postresult['cat'] == $result['id']){ ?> 
+                                    selected="selected"
+                                <?php } ?> 
+                                value="<?php echo $result['id'] ?>"><?php echo $result['name'] ?></option>   --
+                               
                                 <?php }}?> 
                             </select>
                         </td>
@@ -80,8 +101,9 @@
                         <td>
                             <label>Upload Image</label>
                         </td>
-                        <td>
-                            <input type="file" name="image" />
+                        <td> 
+                            <input type="file" name="image" /> <br>
+                            <img src="<?php echo $postresult['image']?>" style="width:150px; margin-top:10px;" alt="">
                         </td>
                     </tr>
                     <tr>
@@ -89,7 +111,9 @@
                             <label>Content</label>
                         </td>
                         <td>
-                            <textarea class="tinymce" name="body"></textarea>
+                            <textarea class="tinymce" name="body">
+                               <?php echo $postresult['body']?>
+                            </textarea>
                         </td>
                     </tr>
                     <tr>
@@ -97,7 +121,7 @@
                             <label>Tags</label>
                         </td>
                         <td>
-                            <input type="text" name="tags" placeholder="Enter Tags..." class="medium" />
+                            <input type="text" name="tags"  value="<?php echo $postresult['tags']?>" class="medium" />
                         </td>
                     </tr> 
                     <tr>
@@ -105,7 +129,7 @@
                             <label>Aurthor</label>
                         </td>
                         <td>
-                            <input type="text" name="aurthor" placeholder="Enter Aurthor Name..." class="medium" />
+                            <input type="text" name="aurthor" value="<?php echo $postresult['aurthor']?>" class="medium" />
                         </td>
                     </tr> 
                     <tr>
@@ -116,6 +140,12 @@
                     </tr>
                 </table>
                 </form>
+
+                <?php 
+                    }
+                  } 
+                ?>
+
             </div>
         </div>
     </div>
