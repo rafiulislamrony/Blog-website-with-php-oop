@@ -13,7 +13,7 @@
 <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $name = $fm->validation($_POST['name']);
-                $body = $fm->validation($_POST['body']);
+                $body = $_POST['body'];
 
                 $name = $db->link->real_escape_string($name);
                 $body = $db->link->real_escape_string($body);
