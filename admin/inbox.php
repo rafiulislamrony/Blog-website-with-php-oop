@@ -18,8 +18,40 @@
             } else {
                 echo "<span class='error'>Something Wrong.</span>";
             }
+        } 
+        if (isset($_GET['unseenid'])) {
+            $unseenid = $_GET['unseenid'];
+            $unseenquery = "UPDATE tbl_contact
+            SET status='0'
+            WHERE id='$unseenid'"; 
+            $updated_row = $db->update($unseenquery);
+
+            if ($updated_row) {
+                echo "<span class='success'>Message Send in the Inbox.</span>";
+
+            } else {
+                echo "<span class='error'>Something Wrong.</span>";
+            }
         }
+        if (isset($_GET['delid'])) {
+            $delid = $_GET['delid'];
+            $delquery = "DELETE FROM tbl_contact WHERE id='$delid'"; 
+
+            $updated_row = $db->update($delquery);
+
+            if ($updated_row) {
+                echo "<span class='success'>Message Delete Successfully.</span>";
+
+            } else {
+                echo "<span class='error'>Something Wrong.</span>";
+            }
+        }
+        
         ?>
+
+
+
+
         <h2>Inbox</h2>
         <div class="block">
             <table class="data display datatable" id="example">
@@ -62,7 +94,7 @@
                                 <td>
                                     <a href="viewmsg.php?msgid=<?php echo $result['id']; ?>">View</a> ||
                                     <a href="replaymsg.php?msgid=<?php echo $result['id']; ?>">Reply</a> ||
-                                    <a onclick="return confirm('Are You Sure to Move Message?')" href="?seenid=<?php echo $result['id']; ?>">Seen</a> ||
+                                    <a onclick="return confirm('Are You Sure to Move Message?')" href="?seenid=<?php echo $result['id']; ?>">Seen</a>
                                 </td>
                             </tr>
                         <?php }
@@ -114,6 +146,8 @@
                                     <?php echo $fm->formatDate($result['date']); ?>
                                 </td>
                                 <td>
+                                <a href="viewmsg.php?msgid=<?php echo $result['id']; ?>">View</a> ||
+                                <a onclick="return confirm('Are You Sure to Move Message?')" href="?unseenid=<?php echo $result['id']; ?>">UnSeen</a> ||
                                     <a onclick="return confirm('Are You Sure to Delete?')" href="?delid=<?php echo $result['id']; ?>">Delete</a>
                                 </td>
                             </tr>
