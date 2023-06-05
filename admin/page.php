@@ -65,7 +65,7 @@
                                 <td>
                                     <textarea class="tinymce" name="body">
                                              <?php echo $result['body']; ?>
-                                            </textarea>
+                                    </textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -94,6 +94,7 @@
         setDatePicker('date-picker');
         $('input[type="checkbox"]').fancybutton();
         $('input[type="radio"]').fancybutton();
+        
     });
 </script>
 <?php include 'inc/footer.php'; ?>
