@@ -25,11 +25,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}elseif(empty($body)){
 		$error = "Message Must Not be Empty";
 	}else{
-		$masg = "ok";
+		$query = "INSERT INTO tbl_contact (firstname, lastname, email, body) VALUES ('$firstname', '$lastname','$email','$body')";
+		$inserted_rows = $db->insert($query); 
+		if ($inserted_rows) {
+			$msg = "Message Send successfully.";
+		} else {
+			$error= "Message Not Send.";
+		}
 	}
-
-	
-
+ 
 }
 ?>
 
@@ -42,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				echo "<span style='color:red;' >$error </span>";
 			}
 			if(isset($msg)){
-				echo "<span style='color:red;' >$msg </span>";
+				echo "<span style='color:green;' >$msg </span>";
 			}
 			?>
 			
