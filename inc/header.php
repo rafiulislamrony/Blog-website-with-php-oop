@@ -64,10 +64,19 @@ $fm = new Format();
 		</a>
 		<div class="social clear">
 			<div class="icon clear">
-				<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+			   <?php
+				$query = "SELECT * FROM tbl_social WHERE id='1' ";
+				$blog_title = $db->select($query);
+				if($blog_title) {
+					while($result = $blog_title->fetch_assoc()) {
+
+                ?>
+				<a href="<?php echo $result['fb']?>" target="_blank"><i class="fa fa-facebook"></i></a>
+				<a href="<?php echo $result['tw']?>" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a href="<?php echo $result['ln']?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+				<a href="<?php echo $result['gp']?>" target="_blank"><i class="fa fa-google-plus"></i></a>
+
+				<?php } }?>
 			</div>
 			
 

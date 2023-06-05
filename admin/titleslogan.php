@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($blog_title) {
                 while($result = $blog_title->fetch_assoc()) {    
  
-          ?>
+            ?>
 
             <div class="block sloginblock">               
                 <form method="POST"  enctype="multipart/form-data"> 
