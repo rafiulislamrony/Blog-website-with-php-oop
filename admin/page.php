@@ -17,7 +17,7 @@
 
                 $name = $db->link->real_escape_string($name);
                 $body = $db->link->real_escape_string($body);
-
+ 
 
                 if ($name == "" || $body == "") {
                     echo "<span class='error'>Field Must not be empty.</span>";
@@ -43,8 +43,7 @@
         <div class="block">
             <?php
             $pagequery = "SELECT * FROM tbl_page WHERE id='$id' ";
-            $pagedetails = $db->select($pagequery);
-
+            $pagedetails = $db->select($pagequery); 
             if ($pagedetails) {
                 while ($result = $pagedetails->fetch_assoc()) { ?>
 

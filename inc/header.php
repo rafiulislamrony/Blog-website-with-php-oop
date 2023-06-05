@@ -1,8 +1,8 @@
 <?php include 'config/config.php'; ?>
 <?php include 'lib/Database.php'; ?>
-<?php include 'helpers/Format.php'; ?> 
-<?php 
-$db = new Database(); 
+<?php include 'helpers/Format.php'; ?>
+<?php
+$db = new Database();
 $fm = new Format();
 ?>
 
@@ -46,39 +46,45 @@ $fm = new Format();
 
 <body>
 	<div class="headersection templete clear">
-		<a href="index.php"> 
-		<?php
-            $query = "SELECT * FROM title_slogan WHERE id='1' ";
-            $blog_title = $db->select($query);
-            if($blog_title) {
-                while($result = $blog_title->fetch_assoc()) {
-            ?>
+		<a href="index.php">
+			<?php
+			$query = "SELECT * FROM title_slogan WHERE id='1' ";
+			$blog_title = $db->select($query);
+			if ($blog_title) {
+				while ($result = $blog_title->fetch_assoc()) {
+					?>
 
-			<div class="logo">
-				<img src="admin/<?php echo $result['logo'];?>" alt="Logo" />
-				<h2><?php echo $result['title'];?></h2>
-				<p><?php echo $result['slogan'];?></p>
-			</div>
+					<div class="logo">
+						<img src="admin/<?php echo $result['logo']; ?>" alt="Logo" />
+						<h2>
+							<?php echo $result['title']; ?>
+						</h2>
+						<p>
+							<?php echo $result['slogan']; ?>
+						</p>
+					</div>
 
-			<?php  }} ?>
+				<?php }
+			} ?>
 		</a>
 		<div class="social clear">
 			<div class="icon clear">
-			   <?php
+				<?php
 				$query = "SELECT * FROM tbl_social WHERE id='1' ";
 				$blog_title = $db->select($query);
-				if($blog_title) {
-					while($result = $blog_title->fetch_assoc()) {
+				if ($blog_title) {
+					while ($result = $blog_title->fetch_assoc()) {
 
-                ?>
-				<a href="<?php echo $result['fb']?>" target="_blank"><i class="fa fa-facebook"></i></a>
-				<a href="<?php echo $result['tw']?>" target="_blank"><i class="fa fa-twitter"></i></a>
-				<a href="<?php echo $result['ln']?>" target="_blank"><i class="fa fa-linkedin"></i></a>
-				<a href="<?php echo $result['gp']?>" target="_blank"><i class="fa fa-google-plus"></i></a>
+						?>
+						<a href="<?php echo $result['fb'] ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="<?php echo $result['tw'] ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+						<a href="<?php echo $result['ln'] ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+						<a href="<?php echo $result['gp'] ?>" target="_blank"><i class="fa fa-google-plus"></i></a>
 
-				<?php } }?>
+					<?php }
+				} ?>
 			</div>
-			
+
 
 			<div class="searchbtn clear">
 				<form action="search.php" method="get">
@@ -94,7 +100,14 @@ $fm = new Format();
 	<div class="navsection templete">
 		<ul>
 			<li><a id="active" href="index.php">Home</a></li>
-			<li><a href="about.php">About</a></li>
+			<?php
+			$query = "SELECT * FROM tbl_page";
+			$pages = $db->select($query);
+			if ($pages) {
+				while ($result = $pages->fetch_assoc()) { ?>
+					<li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?> </a></li>
+				<?php }
+			} ?>
 			<li><a href="contact.php">Contact</a></li>
 		</ul>
-	</div> 
+	</div>
