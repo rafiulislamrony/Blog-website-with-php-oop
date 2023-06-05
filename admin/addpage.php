@@ -27,6 +27,7 @@
 
             <div class="block">               
                 <form action="addpage.php" method="post">
+                    
                 <table class="form"> 
                     <tr>
                         <td>
