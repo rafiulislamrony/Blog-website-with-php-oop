@@ -15,7 +15,7 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = $fm->validation($_POST['title']);
             $cat = $fm->validation($_POST['cat']);
-            $body = $fm->validation($_POST['body']);
+            $body = $_POST['body'];
             $aurthor = $fm->validation($_POST['aurthor']);
             $tags = $fm->validation($_POST['tags']);
 
