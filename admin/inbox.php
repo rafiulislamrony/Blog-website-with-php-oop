@@ -45,12 +45,8 @@
             } else {
                 echo "<span class='error'>Something Wrong.</span>";
             }
-        }
-        
-        ?>
-
-
-
+        } 
+        ?> 
 
         <h2>Inbox</h2>
         <div class="block">
@@ -100,8 +96,7 @@
                         <?php }
                     } ?>
                 </tbody>
-            </table>
-
+            </table> 
         </div>
     </div>
 

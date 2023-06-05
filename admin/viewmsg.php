@@ -24,10 +24,8 @@
                    $query = "SELECT * FROM tbl_contact WHERE id ='$id'";
 
                     $msq = $db->select($query);
-                    if($msq){ 
-                        $i = 0;
-                    while($result = $msq->fetch_assoc()){
-                        $i++
+                    if($msq){  
+                    while($result = $msq->fetch_assoc()){ 
                     ?>
                 <table class="form"> 
                     <tr>
