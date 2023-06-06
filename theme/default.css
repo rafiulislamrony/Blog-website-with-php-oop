@@ -1,0 +1,121 @@
+  /* Defoult */
+  .headersection {
+    background: #ca932f none repeat scroll 0 0;
+}
+
+.icon a {
+    background: #a56e0a none repeat scroll 0 0;
+}
+
+.searchbtn input[type="text"],
+.searchbtn input[type="submit"] {
+    border: 1px solid #A56E0A;
+    background: #FFE07C;
+}
+
+.searchbtn input[type="submit"]:hover {
+    background: #b7801c none repeat scroll 0 0;
+    border: 1px solid #e6af4b;
+}
+
+.navsection {
+    background: none repeat scroll 0 0 #e6af4b;
+}
+
+.navsection ul li a:hover,
+#active {
+    background: #FEF4E5;
+}
+
+.navsection ul li {
+    border-left: 1px solid #fdc662;
+    border-right: 1px solid #c18a26;
+}
+
+.samepost h2 a {
+    color: #ac7511;
+}
+
+.samepost h2,
+.about h2 {
+    border-bottom: 2px solid #e0d6c7;
+}
+
+.maincontent,
+.sidebar {
+    background: #fef4e5 none repeat scroll 0 0;
+    border: 1px solid #ded4c5;
+}
+
+.samepost img {
+    border: 1px solid #ebb450;
+}
+
+.readmore a,
+.pagination a {
+    border: 1px solid #b7801c;
+    color: #b7801c;
+    background: #fff;
+}
+
+.samesidebar h2, .about .relatedpost h2 {
+    border-bottom: 2px solid #b7801c;
+    color: #333;
+   
+}
+.about .relatedpost h2{
+    border-bottom: 2px solid #b7801c;
+}
+
+.readmore a:hover,
+.pagination a:hover {
+    color: #E16525;
+}
+
+.contentsection {
+    border: 1px solid #ca932f;
+}
+
+.samesidebar ul li a {
+    color: #814a00;
+}
+
+.samesidebar ul li a:hover {
+    color: #b97b28;
+}
+
+.samesidebar ul li,
+.popular h3 {
+    border-bottom: 1px dashed #e9c05c;
+}
+
+
+.footermenu ul li a {
+    color: #E6AF4B;
+}
+
+.about h2 {
+    color: #ac7511;
+}
+
+textarea,
+input[type="text"],
+input[type="email"] {
+    border: 1px solid #cfc5b6;
+}
+
+input[type="submit"] {
+    background: #b7801c none repeat scroll 0 0;
+    border: 1px solid #e6af4b;
+}
+
+input[type="submit"]:hover {
+    background: #FEF4E5;
+}
+
+.popular img, .about img {
+    border: 1px solid #f6bf5b;
+}
+.footersection {
+    background: #B7801C;
+}

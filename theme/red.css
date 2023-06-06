@@ -1,0 +1,123 @@
+
+    /* Red */
+
+    .footersection {
+        background: #ad0000 ;
+    }
+
+    .popular img ,  .about img{
+        border: 1px solid #ff0000 ;
+    }
+
+    input[type="submit"] {
+        background: #ad0000 none repeat scroll 0 0;
+        border: 1px solid #ff0000 ;
+    }
+
+    input[type="submit"]:hover {
+        background: #ad0000;
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="email"] {
+        border: 1px solid #ff0000;
+    }
+
+    .footermenu ul li a {
+        color: #ff0000;
+    }
+
+    .headersection  {
+        background: #ad0000 ;
+    }
+
+    .samesidebar ul li a {
+        color: #ff0000 ;
+    }
+
+    .samesidebar ul li a:hover {
+        color: #ff0000;
+    }
+
+    .samesidebar ul li,
+    .popular h3 {
+        border-bottom: 1px dashed #ff0000;
+    }
+
+    .contentsection {
+        border: 1px solid #ff0000;
+    }
+
+    .samesidebar h2,  .about .relatedpost  h2 {
+        border-bottom: 2px solid #ff0000;
+        background: #ad0000 none repeat scroll 0 0;
+    }
+    .about .relatedpost h2{
+        border-bottom: 2px solid #ff0000 !important; 
+    }
+
+    .maincontent,
+    .sidebar {
+        background: #ff000038 none repeat scroll 0 0;
+        border: 1px solid #ff000038;
+    }
+
+    .readmore a,
+    .pagination a {
+        border: 1px solid #ff0000;
+        color: #ad0000;
+    }
+
+    .readmore a:hover,
+    .pagination a:hover {
+        color: #ff0000;
+    }
+
+    .samepost img {
+        border: 1px solid #ff0000;
+    }
+
+    .samepost h2,
+    .about h2 {
+        border-bottom: 2px solid #ff0000;
+        border-bottom: 2px solid #ff0000;
+        color: #ff0000;
+    }
+
+    .headersection {
+        background: #ad0000 none repeat scroll 0 0;
+    }
+
+    .icon a {
+        background: #ad0000 none repeat scroll 0 0;
+    }
+
+    .searchbtn input[type="text"],
+    .searchbtn input[type="submit"] {
+        border: 1px solid #ad0000;
+        background: #ff0000;
+    }
+
+    .searchbtn input[type="submit"]:hover {
+        background: #ad0000 none repeat scroll 0 0;
+        border: 1px solid #ff0000;
+    }
+
+    .navsection {
+        background: none repeat scroll 0 0 #ff0000;
+    }
+
+    .navsection ul li a:hover,
+    #active {
+        background: #ff0000;
+    }
+
+    .navsection ul li {
+        border-left: 1px solid #ff0000;
+        border-right: 1px solid #ff0000;
+    }
+
+    .samepost h2 a {
+        color: #ff0000;
+    } 
