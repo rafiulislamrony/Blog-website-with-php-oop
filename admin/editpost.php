@@ -18,12 +18,14 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
             $body = $_POST['body'];
             $aurthor = $fm->validation($_POST['aurthor']);
             $tags = $fm->validation($_POST['tags']);
+            $userid = $fm->validation($_POST['userid']);
 
             $title = $db->link->real_escape_string($title);
             $cat = $db->link->real_escape_string($cat);
             $body = $db->link->real_escape_string($body);
             $aurthor = $db->link->real_escape_string($aurthor);
             $tags = $db->link->real_escape_string($tags);
+            $userid = $db->link->real_escape_string($userid);
 
             $permited = array('jpg', 'jpeg', 'png', 'gif');
             $file_name = $_FILES['image']['name'];
@@ -64,7 +66,8 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                             body='$body',
                             image='$uploaded_image',
                             aurthor='$aurthor',
-                            tags='$tags'
+                            tags='$tags',
+                            userid='$userid'
                             WHERE id='$postid' ";
 
                         $updated_rows = $db->update($query);
@@ -81,7 +84,8 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                         title='$title',
                         body='$body',
                         aurthor='$aurthor',
-                        tags='$tags'
+                        tags='$tags',
+                        userid='$userid' 
                         WHERE id='$postid' ";
 
                     $updated_rows = $db->update($query);
@@ -168,7 +172,9 @@ if (!isset($_GET['editpostid']) || $_GET['editpostid'] == null) {
                                 <td>
                                     <input type="text" name="aurthor" value="<?php echo $postresult['aurthor'] ?>"
                                         class="medium" />
-                                </td>
+                                        <input type="hidden" name="userid" value="<?php echo Session::get('userID')?>" class="medium" />
+                        
+                                    </td>
                             </tr>
                             <tr>
                                 <td></td>

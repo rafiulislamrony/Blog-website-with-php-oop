@@ -8,13 +8,15 @@
                 $title = $fm->validation($_POST['title']);
                 $cat = $fm->validation($_POST['cat']);
                 $body = $_POST['body'];
-                $aurthor = $fm->validation($_POST['aurthor']);
+                $aurthor = $fm->validation($_POST['aurthor']); 
                 $tags = $fm->validation($_POST['tags']);
+                $userid = $fm->validation($_POST['userid']);
 
                 $title = $db->link->real_escape_string($title);
                 $cat = $db->link->real_escape_string($cat);
                 $body = $db->link->real_escape_string($body);
                 $aurthor = $db->link->real_escape_string($aurthor);
+                $userid = $db->link->real_escape_string($userid);
                 $tags = $db->link->real_escape_string($tags);
 
                 $permited  = array('jpg', 'jpeg', 'png', 'gif');
@@ -35,8 +37,8 @@
                     echo "<span class='error'>You can only upload files with the following extensions: " . implode(', ', $permited) . "</span>";
                 }else {
                     move_uploaded_file($file_temp, $uploaded_image);
-                    $query = "INSERT INTO tbl_post (cat, title, body, image, aurthor, tags) 
-                              VALUES ('$cat', '$title', '$body', '$uploaded_image', '$aurthor', '$tags')";
+                    $query = "INSERT INTO tbl_post (cat, title, body, image, aurthor, tags, userid) 
+                              VALUES ('$cat', '$title', '$body', '$uploaded_image', '$aurthor', '$tags', '$userid')";
                     $inserted_rows = $db->insert($query); 
                     if ($inserted_rows) {
                         echo "<span class='success'>Data inserted successfully.</span>";
@@ -45,8 +47,7 @@
                     }
                 }
             }
-            ?>
-
+            ?> 
             <div class="block">               
                 <form action="addpost.php" method="post" enctype="multipart/form-data">
                 <table class="form"> 
@@ -106,6 +107,7 @@
                         </td>
                         <td>
                             <input type="text" name="aurthor" value="<?php echo Session::get('username')?>" class="medium" />
+                            <input type="hidden" name="userid" value="<?php echo Session::get('userID')?>" class="medium" />
                         </td>
                     </tr> 
                     <tr>
