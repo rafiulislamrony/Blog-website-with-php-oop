@@ -4,42 +4,30 @@
 <?php
 $userid = Session::get('userID');
 $userrole = Session::get('userRole');  
-?>
+?> 
+
+<?php
+    if(!isset($_GET['userid']) || $_GET['userid'] == NULL){
+        // header("Location:catlist.php");
+        echo "<script>window.location = 'userlist.php';</script>";
+    }else{
+        $id = $_GET['userid']; 
+    }
+?> 
+
 
 <div class="grid_10">
     <div class="box round first grid">
-        <h2>Update Profile </h2>
+        <h2> User Details </h2>
          <?php
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $name = $fm->validation($_POST['name']);
-                    $username = $fm->validation($_POST['username']);
-                    $email = $fm->validation($_POST['email']);
-                    $details = $_POST['details']; 
-
-                    $name = $db->link->real_escape_string($name);
-                    $username = $db->link->real_escape_string($username);
-                    $email = $db->link->real_escape_string($email);
-                    $details = $db->link->real_escape_string($details);
-
-                    $query = "UPDATE tbl_user SET
-                            name='$name',
-                            username='$username',
-                            email='$email',
-                            details='$details'
-                            WHERE id='$userid' "; 
-
-                    $updated_rows = $db->update($query);
-                    if ($updated_rows) {
-                        echo "<span class='success'>Data Updated successfully.</span>";
-                    } else {
-                        echo "<span class='error'>Failed to Update data.</span>";
-                    }
-                } 
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                echo "<script>window.location = 'userlist.php';</script>";
+            } 
          ?>  
 
          <div class="block"> 
             <?php
-                $query = "SELECT * FROM tbl_user WHERE id='$userid' AND role='$userrole'";
+                $query = "SELECT * FROM tbl_user WHERE id='$id'"; 
                 $getuser = $db->select($query);
                 if ($getuser) {
                     while ($result = $getuser->fetch_assoc()) {
@@ -52,7 +40,7 @@ $userrole = Session::get('userRole');
                                 <label>Name</label>
                             </td>
                             <td>
-                                <input type="text" name="name" value="<?php echo $result['name'] ?>" class="medium" />
+                                <input type="text" readonly name="name" value="<?php echo $result['name'] ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -60,7 +48,7 @@ $userrole = Session::get('userRole');
                                 <label>Userame</label>
                             </td>
                             <td>
-                                <input type="text" name="username" value="<?php echo $result['username'] ?>" class="medium" />
+                                <input type="text" readonly name="username" value="<?php echo $result['username'] ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -68,7 +56,7 @@ $userrole = Session::get('userRole');
                                 <label>Email</label>
                             </td>
                             <td>
-                                <input type="email" name="email" value="<?php echo $result['email'] ?>" class="medium" />
+                                <input type="email" readonly name="email" value="<?php echo $result['email'] ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -76,13 +64,13 @@ $userrole = Session::get('userRole');
                                 <label>Details</label>
                             </td>
                             <td>
-                                <textarea class="tinymce" name="details"><?php echo $result['details'] ?></textarea>
+                                <textarea class="tinymce" readonly name="details"><?php echo $result['details'] ?></textarea>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" name="submit" Value="Uplade" />
+                                <input type="submit" name="submit" Value="View Ok" />
                             </td>
                         </tr>
                     </table>
