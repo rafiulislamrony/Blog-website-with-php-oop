@@ -17,7 +17,7 @@
             $div = explode('.', $file_name);
             $file_ext = strtolower(end($div));
             $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
-            $uploaded_image = "upload/slider" . $unique_image;
+            $uploaded_image = "upload/slider/" . $unique_image;
 
             if ($title == "" || $file_name == "") {
                 echo "<span class='error'>Field Must not be empty.</span>";
