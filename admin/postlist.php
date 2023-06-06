@@ -36,7 +36,7 @@
 
 							<tr class="odd gradeX">
 								<td style="width: 5%;">
-									<?php echo $i++; ?>
+									<?php echo $i; ?>
 								</td>
 								<td style="width: 15%;">
 									<?php echo $result['title']; ?>
