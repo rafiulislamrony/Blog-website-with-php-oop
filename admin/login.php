@@ -59,7 +59,10 @@ $fm = new Format();
 			</div>
 		</form><!-- form -->
 		<div class="button">
-			<a href="#">Php Blog with opp</a>
+			<a href="forgetpass.php">Forgot Password !</a>
+		</div><!-- button -->
+		<div class="button">
+			<a href="#">Php Blog with Opp</a>
 		</div><!-- button -->
 	</section><!-- content -->
 </div><!-- container -->
