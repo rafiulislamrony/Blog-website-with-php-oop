@@ -1,5 +1,11 @@
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/sidebar.php'; ?>
+<?php
+if(!Session::get('userRole') == '0' ){
+    echo "<script>window.location = 'index.php';</script>";
+}
+?>  
+
         <div class="grid_10">
 		
             <div class="box round first grid">

@@ -102,7 +102,10 @@ $fm = new Format();
                     
                 </span></a></li>
                 <li class="ic-form-style"><a href="profile.php"><span>User Profile</span></a></li>
+                <?php 
+                 if(Session::get('userRole') == '0' ){  ?> 
                 <li class="ic-charts"><a href="adduser.php"><span>Add User</span></a></li>
+                <?php   } ?>
                 <li class="ic-charts"><a href="userlist.php"><span>User List</span></a></li> 
             
             </ul>

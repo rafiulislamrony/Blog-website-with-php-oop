@@ -105,7 +105,7 @@
                             <label>Aurthor</label>
                         </td>
                         <td>
-                            <input type="text" name="aurthor" placeholder="Enter Aurthor Name..." class="medium" />
+                            <input type="text" name="aurthor" value="<?php echo Session::get('username')?>" class="medium" />
                         </td>
                     </tr> 
                     <tr>
