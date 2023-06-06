@@ -37,6 +37,7 @@ $fm = new Format();
 						Session::set("login", true);
 						Session::set("username", $value['username']);
 						Session::set("userID", $value['id']);
+						Session::set("userRole", $value['role']);
 						header("Location: index.php");
 					} else {
 						echo "<span style='color:red;font-size:18px;'>No Result Found!</span>";
