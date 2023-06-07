@@ -1,10 +1,11 @@
 <?php include 'inc/header.php'; ?>
 <?php
-if (!isset($_GET['pageid']) || $_GET['pageid'] == NULL) {
+$pageid = $db->link->real_escape_string($_GET['pageid']);
+if (!isset($pageid) || $pageid == NULL) {
 	// header("Location:catlist.php");
 	echo "<script>window.location = '404.php';</script>";
 } else {
-	$id = $_GET['pageid'];
+	$id = $pageid;
 }
 ?>
 <?php
@@ -16,15 +17,16 @@ if ($pagedetails) {
 		<div class="contentsection contemplete clear">
 			<div class="maincontent clear">
 				<div class="about">
-					<h2><?php echo $result['name'];?> </h2>
-
-					<?php echo $result['body'];?>
-
+					<h2>
+						<?php echo $result['name']; ?>
+					</h2>
+					<?php echo $result['body']; ?>
 				</div>
-
 			</div>
-
-		<?php } }else{header("Location:404.php"); } ?>
+		<?php }
+} else {
+	header("Location:404.php");
+} ?>
 	<?php include 'inc/sidebar.php'; ?>
 
 	<?php include 'inc/footer.php'; ?>
